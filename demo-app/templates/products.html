@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Products{% endblock %}
+{% block content %}
+<div class="container">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+    <h1 id="products-heading" style="font-size:26px;font-weight:700;">Products</h1>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <a href="/products" class="btn {% if selected=='all' %}btn-primary{% else %}btn-secondary{% endif %}" style="padding:7px 14px;font-size:12px;">All</a>
+      {% for cat in categories %}
+      <a href="/products?category={{ cat }}" class="btn {% if selected==cat %}btn-primary{% else %}btn-secondary{% endif %}" style="padding:7px 14px;font-size:12px;">{{ cat }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" id="products-grid">
+    {% for p in products %}
+    <div class="card" id="product-{{ p.id }}">
+      <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;">{{ p.category }}</div>
+      <h3 style="font-weight:700;margin-bottom:8px;">{{ p.name }}</h3>
+      <div style="font-size:22px;font-weight:800;color:#0a84ff;margin-bottom:12px;">${{ "%.2f"|format(p.price) }}</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        {% if p.stock > 0 %}
+          <span class="badge badge-green">In Stock ({{ p.stock }})</span>
+          <a href="#" class="btn btn-primary" style="padding:7px 14px;font-size:12px;">Add to Cart</a>
+        {% else %}
+          <span class="badge badge-red">Out of Stock</span>
+          <button class="btn btn-secondary" disabled style="padding:7px 14px;font-size:12px;opacity:0.5;">Unavailable</button>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+    {% if not products %}
+    <div style="grid-column:span 3;text-align:center;padding:40px;color:#888;" id="no-products">No products found in this category.</div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

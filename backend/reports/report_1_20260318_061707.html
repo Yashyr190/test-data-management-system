@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Test Report - Homepage Load & Heading Check</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; background: #0a0a0a; color: #e8e8e8; padding: 40px; }
+  h1 { font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .subtitle { color: #888; margin-bottom: 40px; font-size: 0.9rem; }
+  .summary { display: flex; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+  .stat { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 20px 28px; flex: 1; min-width: 140px; }
+  .stat-value { font-size: 2rem; font-weight: 700; }
+  .stat-label { font-size: 0.8rem; color: #666; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .passed { color: #30d158; }
+  .failed { color: #ff453a; }
+  .running { color: #ffd60a; }
+  .section { background: #111; border: 1px solid #222; border-radius: 12px; margin-bottom: 24px; overflow: hidden; }
+  .section-header { padding: 16px 24px; border-bottom: 1px solid #222; display: flex; align-items: center; justify-content: space-between; }
+  .section-header h3 { font-size: 1rem; font-weight: 600; }
+  .badge { padding: 4px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+  .badge-passed { background: rgba(48,209,88,0.15); color: #30d158; }
+  .badge-failed { background: rgba(255,69,58,0.15); color: #ff453a; }
+  .logs { padding: 16px 24px; max-height: 300px; overflow-y: auto; }
+  .log-entry { padding: 4px 0; font-size: 0.82rem; font-family: 'SF Mono', monospace; border-bottom: 1px solid #1a1a1a; }
+  .log-entry .ts { color: #555; margin-right: 8px; }
+  .log-entry.error { color: #ff453a; }
+  .screenshots { padding: 16px 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .screenshots img { width: 240px; height: 140px; object-fit: cover; border-radius: 8px; border: 1px solid #333; }
+  .error-box { padding: 16px 24px; background: rgba(255,69,58,0.05); border-top: 1px solid rgba(255,69,58,0.2); }
+  .error-box pre { color: #ff453a; font-size: 0.82rem; white-space: pre-wrap; }
+  .meta { color: #666; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<h1>Test Execution Report</h1>
+<p class="subtitle">Generated 2026-03-18 06:17 UTC &nbsp;·&nbsp; Homepage Load & Heading Check</p>
+
+<div class="summary">
+  <div class="stat"><div class="stat-value">1</div><div class="stat-label">Total</div></div>
+  <div class="stat"><div class="stat-value passed">0</div><div class="stat-label">Passed</div></div>
+  <div class="stat"><div class="stat-value failed">1</div><div class="stat-label">Failed</div></div>
+  <div class="stat"><div class="stat-value">30.38s</div><div class="stat-label">Avg Duration</div></div>
+</div>
+
+
+<div class="section">
+  <div class="section-header">
+    <div>
+      <h3>Homepage Load & Heading Check</h3>
+      <div class="meta">ID #1 &nbsp;·&nbsp; Duration: 30.38s &nbsp;·&nbsp; 2026-03-18T06:16:17.208614</div>
+    </div>
+    <span class="badge badge-failed">FAILED</span>
+  </div>
+
+  
+  <div class="logs">
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:17]</span>═══════════════════════════════════════
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:17]</span>  TDMS Test Runner
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:17]</span>  Steps: 5  |  Base URL: http://localhost:9000
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:17]</span>═══════════════════════════════════════
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:17]</span>🔧 Configuring Chrome options…
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:17]</span>🌐 Launching Chrome browser…
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:31]</span>Driver init fallback: [Errno 8] Exec format error: '/Users/yashramnani/.wdm/drivers/chromedriver/mac64/146.0.7680.80/chromedriver-mac-arm64/THIRD_PARTY_NOTICES.chromedriver'
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:46]</span>✅ Browser launched successfully
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:46]</span>
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:46]</span>┌─ Step 1/5: Open target URL
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:46]</span>  ⟶  [navigate]  http://localhost:9000
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:46]</span>  Navigating to http://localhost:9000
+    </div>
+    
+    <div class="log-entry error">
+      <span class="ts">[06:16:46]</span>  ✗ ERROR: Message: unknown error: net::ERR_CONNECTION_REFUSED
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:47]</span>📸 Screenshot: step_error_04b28464.png
+    </div>
+    
+    <div class="log-entry error">
+      <span class="ts">[06:16:47]</span>└─ ✗ FAILED
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:47]</span>
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:47]</span>⏱  Duration: 30.38s   Status: FAILED
+    </div>
+    
+    <div class="log-entry ">
+      <span class="ts">[06:16:47]</span>═══════════════════════════════════════
+    </div>
+    
+  </div>
+  
+
+  
+  <div class="screenshots">
+    
+    <img src="screenshots/step_error_04b28464.png" alt="screenshot" />
+    
+  </div>
+  
+
+  
+  <div class="error-box"><pre>Error: Step 1 failed: action='navigate'</pre></div>
+  
+</div>
+
+</body>
+</html>

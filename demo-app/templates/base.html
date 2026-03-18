@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}ShopDemo{% endblock %} — TDMS Demo App</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; color: #1a1a1a; min-height: 100vh; }
+    nav { background: #1a1a1a; color: #fff; padding: 0 32px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+    nav .logo { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+    nav .logo span { color: #0a84ff; }
+    nav ul { list-style: none; display: flex; gap: 8px; align-items: center; }
+    nav ul a { color: #ccc; text-decoration: none; font-size: 14px; padding: 6px 12px; border-radius: 6px; transition: all 0.15s; }
+    nav ul a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    nav ul a.btn-nav { background: #0a84ff; color: #fff; }
+    nav ul a.btn-nav:hover { background: #1a8fff; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+    .card { background: #fff; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 28px; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: all 0.15s; text-decoration: none; }
+    .btn-primary { background: #0a84ff; color: #fff; }
+    .btn-primary:hover { background: #1a8fff; }
+    .btn-secondary { background: #f0f0f0; color: #1a1a1a; }
+    .btn-secondary:hover { background: #e0e0e0; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #555; }
+    .form-group input { width: 100%; padding: 10px 14px; border: 1.5px solid #e0e0e0; border-radius: 8px; font-size: 14px; transition: border-color 0.15s; }
+    .form-group input:focus { outline: none; border-color: #0a84ff; box-shadow: 0 0 0 3px rgba(10,132,255,0.12); }
+    .alert { padding: 12px 16px; border-radius: 8px; font-size: 14px; margin-bottom: 20px; }
+    .alert-error { background: #fff0f0; color: #c0392b; border: 1px solid #fcc; }
+    .alert-success { background: #f0fff4; color: #27ae60; border: 1px solid #cfc; }
+    .badge { display: inline-flex; padding: 2px 8px; border-radius: 99px; font-size: 11px; font-weight: 700; }
+    .badge-blue { background: #e8f1ff; color: #0a84ff; }
+    .badge-green { background: #e8ffe8; color: #27ae60; }
+    .badge-red { background: #fff0f0; color: #e74c3c; }
+    footer { text-align: center; padding: 24px; color: #aaa; font-size: 12px; border-top: 1px solid #eee; margin-top: 40px; }
+  </style>
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <nav>
+    <div class="logo">Shop<span>Demo</span></div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/search">Search</a></li>
+      {% if logged_in is defined and logged_in %}
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/logout">Logout</a></li>
+      {% else %}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register" class="btn-nav">Register</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% block content %}{% endblock %}
+  <footer>TDMS Demo App — for automated testing purposes only</footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% set logged_in = true %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="container">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+    <div>
+      <h1 id="dashboard-heading" style="font-size:26px;font-weight:700;">Hello, {{ name }} 👋</h1>
+      <p style="color:#888;font-size:14px;margin-top:2px;">Here's your account overview</p>
+    </div>
+    <span class="badge badge-blue" id="user-role" style="font-size:12px;padding:5px 12px;">{{ role }}</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;">
+    <div class="card" style="border-left:4px solid #0a84ff;">
+      <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">Total Products</div>
+      <div id="total-products" style="font-size:28px;font-weight:700;">{{ products|length }}</div>
+    </div>
+    <div class="card" style="border-left:4px solid #30d158;">
+      <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">In Stock</div>
+      <div id="in-stock" style="font-size:28px;font-weight:700;color:#27ae60;">{{ products|selectattr('stock', '>', 0)|list|length }}</div>
+    </div>
+    <div class="card" style="border-left:4px solid #ff453a;">
+      <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">Out of Stock</div>
+      <div id="out-of-stock" style="font-size:28px;font-weight:700;color:#e74c3c;">{{ products|selectattr('stock', '==', 0)|list|length }}</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-weight:700;margin-bottom:16px;">Recent Products</h3>
+    <table style="width:100%;border-collapse:collapse;">
+      <thead>
+        <tr style="border-bottom:2px solid #f0f0f0;">
+          <th style="text-align:left;padding:8px;font-size:12px;color:#888;text-transform:uppercase;">Product</th>
+          <th style="text-align:left;padding:8px;font-size:12px;color:#888;text-transform:uppercase;">Category</th>
+          <th style="text-align:right;padding:8px;font-size:12px;color:#888;text-transform:uppercase;">Price</th>
+          <th style="text-align:right;padding:8px;font-size:12px;color:#888;text-transform:uppercase;">Stock</th>
+        </tr>
+      </thead>
+      <tbody id="products-table">
+        {% for p in products[:5] %}
+        <tr style="border-bottom:1px solid #f5f5f5;">
+          <td style="padding:10px 8px;font-weight:500;">{{ p.name }}</td>
+          <td style="padding:10px 8px;color:#888;">{{ p.category }}</td>
+          <td style="padding:10px 8px;text-align:right;font-weight:600;">${{ "%.2f"|format(p.price) }}</td>
+          <td style="padding:10px 8px;text-align:right;">
+            {% if p.stock > 0 %}
+              <span class="badge badge-green">{{ p.stock }}</span>
+            {% else %}
+              <span class="badge badge-red">Out</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="/products" style="display:inline-block;margin-top:14px;color:#0a84ff;font-size:13px;">View all products →</a>
+  </div>
+</div>
+{% endblock %}

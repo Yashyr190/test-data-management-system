@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+<div class="container">
+  <h1 style="font-size:26px;font-weight:700;margin-bottom:20px;">Search Products</h1>
+  <form action="/search" method="GET" id="search-form" style="margin-bottom:28px;">
+    <div style="display:flex;gap:10px;">
+      <input
+        type="text"
+        name="q"
+        id="search-input"
+        value="{{ query }}"
+        placeholder="Search by name or category..."
+        style="flex:1;padding:12px 16px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:15px;"
+      />
+      <button type="submit" class="btn btn-primary" id="search-btn" style="padding:12px 24px;">Search</button>
+    </div>
+  </form>
+  {% if query %}
+    <p style="color:#888;font-size:14px;margin-bottom:20px;" id="search-result-count">
+      {% if results %}Found {{ results|length }} result{% if results|length != 1 %}s{% endif %} for "{{ query }}"{% else %}No results for "{{ query }}"{% endif %}
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" id="search-results">
+      {% for p in results %}
+      <div class="card">
+        <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;">{{ p.category }}</div>
+        <h3 style="font-weight:700;margin-bottom:8px;">{{ p.name }}</h3>
+        <div style="font-size:20px;font-weight:800;color:#0a84ff;">${{ "%.2f"|format(p.price) }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p style="color:#bbb;text-align:center;padding:40px;" id="search-placeholder">Enter a search term above to find products.</p>
+  {% endif %}
+</div>
+{% endblock %}
