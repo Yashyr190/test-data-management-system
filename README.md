@@ -68,11 +68,6 @@ bash start.bash
 * [testuser@example.com](mailto:testuser@example.com) / SecurePass!123
 * [admin@example.com](mailto:admin@example.com) / AdminPass!456
 
----
-
-## 📸 Demo Preview
-
-👉 Add screenshots here (IMPORTANT)
 
 ---
 
